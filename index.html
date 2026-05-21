@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="theme-icon">☀</span>
+  </button>
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="greeting-block">
+      <p class="greeting-sub" id="greetingTime">Good morning</p>
+      <h1 class="greeting-name" id="greetingName">Hello, <span id="userName">Friend</span> ✦</h1>
+      <p class="greeting-date" id="currentDate">—</p>
+      <p class="daily-quote" id="dailyQuote"></p>
+    </div>
+    <div class="clock-block">
+      <div class="clock" id="clock">00:00:00</div>
+    </div>
+  </header>
+
+  <!-- Name Modal -->
+  <div class="modal-overlay" id="nameModal">
+    <div class="modal">
+      <h2>What's your name?</h2>
+      <p>Personalize your dashboard</p>
+      <input type="text" id="nameInput" placeholder="Enter your name…" maxlength="30" />
+      <button id="saveNameBtn">Let's go →</button>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <main class="dashboard-grid">
+
+    <!-- Focus Timer -->
+    <section class="card card--timer" id="timerCard">
+      <div class="card-label">Focus Timer</div>
+      <div class="timer-ring-wrap">
+        <svg class="timer-ring" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="88"/>
+          <circle class="ring-progress" id="ringProgress" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="timer-display">
+          <span class="timer-digits" id="timerDisplay">25:00</span>
+          <span class="timer-label-inner" id="timerMode">FOCUS</span>
+        </div>
+      </div>
+      <div class="timer-controls">
+        <button class="btn-timer btn-start" id="startBtn">Start</button>
+        <button class="btn-timer btn-stop"  id="stopBtn">Pause</button>
+        <button class="btn-timer btn-reset" id="resetBtn">Reset</button>
+      </div>
+      <div class="timer-duration-row">
+        <label for="pomoDuration">Duration (min):</label>
+        <input type="number" id="pomoDuration" value="25" min="1" max="120" />
+        <button id="applyDuration">Apply</button>
+      </div>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card card--todo" id="todoCard">
+      <div class="card-label">Tasks</div>
+      <div class="todo-header">
+        <input type="text" id="taskInput" placeholder="Add a new task…" maxlength="120" />
+        <button id="addTaskBtn">+</button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <span class="progress-pct" id="progressPercent"></span>
+      </div>
+
+      <div class="todo-sort-row">
+        <span class="sort-label">Sort:</span>
+        <button class="sort-btn active" data-sort="default">Added</button>
+        <button class="sort-btn" data-sort="alpha">A–Z</button>
+        <button class="sort-btn" data-sort="done">Done last</button>
+      </div>
+      <ul class="task-list" id="taskList"></ul>
+      <div class="todo-footer" id="todoFooter">0 tasks</div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="card card--links" id="linksCard">
+      <div class="card-label">Quick Links</div>
+      <div class="links-add-row">
+        <input type="text" id="linkName" placeholder="Label" maxlength="20" />
+        <input type="url"  id="linkUrl"  placeholder="https://…" />
+        <button id="addLinkBtn">+</button>
+      </div>
+      <div class="links-grid" id="linksGrid"></div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
